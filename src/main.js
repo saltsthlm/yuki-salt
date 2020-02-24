@@ -1,7 +1,8 @@
 'use strict'
 
 const { version } = require('../package.json')
-const { bot_token, ...options } = require('../settings.json')
+// const { bot_token, ...options } = require('../settings.json')
+const options = {}
 
 const path = require('path')
 
@@ -11,6 +12,8 @@ const makeMemory = require('./memory')
 const { makeStore } = require('./store')
 const commands = require('./commands')
 const makeHandler = require('./handler')
+
+const { BOT_TOKEN } = process.env
 
 
 const client = new Discord.Client()
@@ -42,4 +45,4 @@ client.on('error', error => {
 	console.error(error)
 })
 
-client.login(bot_token)
+client.login(BOT_TOKEN)
