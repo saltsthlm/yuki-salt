@@ -21,7 +21,7 @@ jobs:
       - run: npm run test:unit
 
 orbs:
-  heroku: circleci/heroku@0.0.10.
+  heroku: circleci/heroku@1.0.1
 
 workflows:
   heroku_deploy:
