@@ -1,4 +1,5 @@
-version: 2
+version: 2.1
+
 jobs:
   build:
     docker:
@@ -18,3 +19,17 @@ jobs:
       
       - run: npm run lint
       - run: npm run test:unit
+
+orbs:
+  heroku: circleci/heroku@0.0.10.
+
+workflows:
+  heroku_deploy:
+    jobs:
+      - build
+      - heroku/deploy-via-git:
+          requires:
+            - build
+          filters:
+            branches:
+              only: sequential-branch-filter
