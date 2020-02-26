@@ -8,7 +8,10 @@ module.exports.save = makePipe(
             .map(x => x.trim())
         return store.save(key, value)
             .then(() => message.channel.send('I will remember that.'))
-            .catch(console.error)
+            .catch(error => {
+                console.error(error)
+                message.channel.send('Could not fulfill the request')
+            })
     }
 )
 
